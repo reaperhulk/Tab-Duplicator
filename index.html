@@ -1,0 +1,15 @@
+<script type="text/javascript">
+safari.application.addEventListener("command",captureMessageEvent,false);
+
+function captureMessageEvent(event) {
+	if (event.command !== 'tabDuplicator') {
+		return;
+	}
+	currentUrl = safari.application.activeBrowserWindow.activeTab.url;
+	
+	tabPosition = safari.extension.settings.getItem("tabPosition");
+	var tab = safari.application.activeBrowserWindow.openTab(tabPosition);
+	tab.url = event.userInfo
+}
+
+</script>
