@@ -54,6 +54,8 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://github.com/reaperhulk/Tab-Duplicator/raw/master/tab-duplicator-update.plist</string>
 	<key>Website</key>
 	<string>http://langui.sh</string>
 </dict>
