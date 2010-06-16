@@ -6,9 +6,9 @@
 		<key>DefaultValue</key>
 		<string>background</string>
 		<key>Key</key>
-		<string>tabPosition</string>
+		<string>tabFocus</string>
 		<key>Title</key>
-		<string>Duplicate Tab Position</string>
+		<string>Tab Focus</string>
 		<key>Titles</key>
 		<array>
 			<string>Background</string>
@@ -20,6 +20,30 @@
 		<array>
 			<string>background</string>
 			<string>foreground</string>
+		</array>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>right</string>
+		<key>Key</key>
+		<string>tabPosition</string>
+		<key>Title</key>
+		<string>Tab Position</string>
+		<key>Titles</key>
+		<array>
+			<string>Right of Active Tab</string>
+			<string>Left of Active Tab</string>
+			<string>Beginning</string>
+			<string>End</string>
+		</array>
+		<key>Type</key>
+		<string>PopUpButton</string>
+		<key>Values</key>
+		<array>
+			<string>right</string>
+			<string>left</string>
+			<string>beginning</string>
+			<string>end</string>
 		</array>
 	</dict>
 </array>

@@ -1,5 +1,6 @@
 <script type="text/javascript">
 safari.application.addEventListener("command",captureMessageEvent,false);
+safari.application.addEventListener("validate",validateEvent,false);
 
 function captureMessageEvent(event) {
 	if (event.command !== 'tabDuplicator') {
@@ -7,9 +8,46 @@ function captureMessageEvent(event) {
 	}
 	currentUrl = safari.application.activeBrowserWindow.activeTab.url;
 	
+	tabFocus = safari.extension.settings.getItem("tabFocus");
 	tabPosition = safari.extension.settings.getItem("tabPosition");
-	var tab = safari.application.activeBrowserWindow.openTab(tabPosition);
-	tab.url = event.userInfo
+	var tabIndex = currentTabIndex();
+	var tab = safari.application.activeBrowserWindow.openTab(tabFocus);
+	switch(tabPosition) {
+		case 'right':
+			safari.application.activeBrowserWindow.insertTab(tab,tabIndex+1);
+		break;
+		case 'left':
+			safari.application.activeBrowserWindow.insertTab(tab,tabIndex-1);
+		break;
+		case 'beginning':
+			safari.application.activeBrowserWindow.insertTab(tab,0);
+		break;
+		case 'end':
+		break;
+	}
+	tab.url = currentUrl;
 }
 
+function currentTabIndex() {
+	var tabs = safari.application.activeBrowserWindow.tabs;
+	for (var i=0;i < tabs.length;i++) {
+		if (safari.application.activeBrowserWindow.activeTab == tabs[i]) {
+			return i;
+		}
+	}
+	return false;
+}
+
+
+function validateEvent(event) {
+	if(event.command !== 'tabDuplicator') {
+		return;
+	}
+	try {
+		event.target.disabled = !event.target.browserWindow.activeTab.url;
+	} catch(e) {
+		//event.target.browserWindow.activeTab.url won't be valid for events originating from the context menu
+		event.target.disabled = !safari.application.activeBrowserWindow.activeTab.url;
+	}
+}
 </script>
