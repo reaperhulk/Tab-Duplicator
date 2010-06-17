@@ -17,7 +17,7 @@ function captureMessageEvent(event) {
 			safari.application.activeBrowserWindow.insertTab(tab,tabIndex+1);
 		break;
 		case 'left':
-			safari.application.activeBrowserWindow.insertTab(tab,tabIndex-1);
+			safari.application.activeBrowserWindow.insertTab(tab,tabIndex);
 		break;
 		case 'beginning':
 			safari.application.activeBrowserWindow.insertTab(tab,0);
